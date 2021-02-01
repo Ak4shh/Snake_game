@@ -33,7 +33,7 @@ def snake(snake_block, snake_list):
     for x in snake_list:
         pygame.draw.rect(dis, red, [x[0], x[1], snake_block, snake_block])
 
-#
+
 #main func loop
 
 def snake_game():
@@ -74,6 +74,8 @@ def snake_game():
             score_font = pygame.font.SysFont("Ariel", 35)
             value = score_font.render("Score: " + str(score), True, green)
             dis.blit(value, [display_width / 3, display_height / 5])
+            value = score_font.render("Time taken: " + str(time1) + " sec", True, green)
+            dis.blit(value, [display_width / 3, display_height / 10])
             pygame.display.update()
 
     #asking if we want to play again or exit
@@ -121,7 +123,7 @@ def snake_game():
                         dis.fill(orange)
                         pause_style = pygame.font.SysFont("Ariel", 25)
 
-                        pause_msg = pause_style.render("Paused! continue? Press c. To exit press Q", True, red)
+                        pause_msg = pause_style.render("Paused! continue? Press c. To exit press Q", True, black)
 
                         dis.blit(pause_msg, [display_width / 6, display_height / 3])
                         pygame.display.update()
@@ -156,10 +158,7 @@ def snake_game():
 
         clock.tick(snake_speed)
         stop = time.time()
-        time1 = stop - start
-        timetaken_font = pygame.font.SysFont("Ariel", 35)
-        timetaken = timetaken_font.render("Time taken: " + str(time1), True, black)
-        dis.blit(timetaken, [display_width / 4, display_height / 7])
+        time1 = int(stop - start)
     pygame.quit()
     quit()
 
